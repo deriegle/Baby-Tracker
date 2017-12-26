@@ -8,11 +8,20 @@
 
   <ion-navbar>
     <ion-title>Baby Tracker</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal">
+        <ion-icon name="add-circle"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-list>
+    <button ion-item *ngFor="let date of dates" (click)="dateSelected(date)">
+      {{date.month}} {{date.date}}, {{date.year}}
+    </button>
+  </ion-list>
 </ion-content>
