@@ -9,5 +9,31 @@
 
 
 <ion-content padding>
+  <ion-list>
 
+    <ion-item>
+      <ion-label>Date</ion-label>
+      <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="date.month"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Time</ion-label>
+      <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="date.time"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Feeding (cc/mL)</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Pee?</ion-label>
+      <ion-checkbox color="dark" [(ngModel)]="date.pee"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Poop?</ion-label>
+      <ion-checkbox color="dark" [(ngModel)]="date.poop"></ion-checkbox>
+    </ion-item>
+
+  </ion-list>
 </ion-content>

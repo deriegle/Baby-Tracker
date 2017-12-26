@@ -16,11 +16,21 @@ export class TrackerPage {
                   "2017-12-23", "2017-12-24",
                   "2017-12-25", "2017-12-26"
     ];
-    let i = 0;
-    for(i; i < this.dates.length; i++){
-      this.dates[i] = new Date(this.dates[i]).toDateString();  
+
+    let monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+
+    for(let i=0; i < this.dates.length; i++){
+
+      var currentDate = new Date(this.dates[i]);
+
+      this.dates[i] = monthNames[currentDate.getMonth()] + " " +
+       currentDate.getDate().toString() + ", " +
+       currentDate.getFullYear().toString(); 
     }
   }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TrackerPage');
