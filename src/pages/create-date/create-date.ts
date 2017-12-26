@@ -2,18 +2,16 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 @Component({
-  selector: 'page-dateview',
-  templateUrl: 'dateview.html',
+  selector: 'page-create-date',
+  templateUrl: 'create-date.html',
 })
-export class DateViewPage {
-  selectedDate: any;
-  
+export class CreateDatePage {
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.selectedDate = navParams.get('date');
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DateViewPage');
+    console.log('ionViewDidLoad CreateDatePage');
   }
 
 }
