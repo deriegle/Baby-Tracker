@@ -11,18 +11,11 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { DateViewPage } from '../pages/dateview/dateview';
 import { CreateDatePage } from '../pages/create-date/create-date';
 
+import { firebaseConfig } from '../environment';
 import { AngularFireModule } from 'angularfire2';
-import { FirebaseProvider } from '../providers/firebase/firebase';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
-
-const firebaseConfig = {
-  apiKey: "AIzaSyBqNjPId1ttUqF3Ku0DzEWsWhkDxzCpul8",
-  authDomain: "babytracker-ed923.firebaseapp.com",
-  databaseURL: "https://babytracker-ed923.firebaseio.com",
-  projectId: "babytracker-ed923",
-  storageBucket: "babytracker-ed923.appspot.com",
-  messagingSenderid: "560163779110"
-};
 
 @NgModule({
   declarations: [
@@ -36,7 +29,9 @@ const firebaseConfig = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initalizeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -46,14 +41,11 @@ const firebaseConfig = {
     HomePage,
     TabsPage,
     CreateDatePage
-    // AboutPage,
-    // ContactPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    FirebaseProvider
   ]
 })
 export class AppModule {}

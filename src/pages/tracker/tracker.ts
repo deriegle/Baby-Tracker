@@ -3,14 +3,21 @@ import { NavController, NavParams } from 'ionic-angular';
 import { DateViewPage } from '../dateview/dateview';
 import { CreateDatePage } from '../create-date/create-date';
 
+import { AngularFireDatabase } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
+
 @Component({
   selector: 'page-tracker',
   templateUrl: 'tracker.html',
 })
 export class TrackerPage {
+  items: Observable<any[]>;
   dates: string[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public db: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams) {
+    
+    this.items = db.list('dates').valueChanges();
+
     this.dates = [ "2017-12-19", "2017-12-20",
                   "2017-12-21","2017-12-22",
                   "2017-12-23", "2017-12-24",

@@ -11,4 +11,7 @@
   <h2 text-center *ngIf="selectedDate">
     {{selectedDate}}
   </h2>
+  <ion-item *ngFor="let d of date">
+    {{d}}
+  </ion-item>
 </ion-content>
