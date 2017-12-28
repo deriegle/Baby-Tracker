@@ -13,12 +13,12 @@
 
     <ion-item>
       <ion-label floating>Parent's Name</ion-label>
-      <ion-input type="text" [(ngModel)]="parent"></ion-input>
+      <ion-input type="text" [(ngModel)]="createdFeeding.feeding.parent"></ion-input>
     </ion-item>
     
     <ion-item>
       <ion-label floating>Date</ion-label>
-      <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="createdFeeding.feeding.date"></ion-datetime>
+      <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="todaysDate"></ion-datetime>
     </ion-item>
 
     <ion-item>

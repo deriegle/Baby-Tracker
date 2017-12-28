@@ -10,27 +10,27 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: 'create-date.html',
 })
 export class CreateDatePage {
-  parent: any;
-
+  d = new Date;
+  todaysDate = this.d.getFullYear().toString() + '-' + (this.d.getMonth() + 1) + '-' + this.d.getDate().toString();
+  todaysTime = this.d.getHours().toString() + ':' + this.d.getMinutes().toString();
+  
   timedFeeding = {
-    time: '11:00PM',
+    time: this.todaysTime,
     fAmount: 0,
     bmAmount: 0,
     pee: false,
     poop: false,
-    parent: this.parent
   };
 
   createdFeeding = {
     feeding: {
-      date: new Date(),
+      date: this.todaysDate,
       parent: ''
     },
     feed: this.timedFeeding
   }
 
-  constructor(public navCtrl: NavController, public httpClient: HttpClient, public navParams: NavParams, public feedingsProvider: FeedingsProvider) {
-
+  constructor(public navCtrl: NavController, public httpClient: HttpClient, public navParams: NavParams) {
   }
 
   saveFeeding() {
@@ -47,7 +47,7 @@ export class CreateDatePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad CreateDatePage');
   }
-
+/*
   findMonth(d){
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     return `$(months[d])`;
@@ -61,5 +61,5 @@ export class CreateDatePage {
     if (day.length < 2) day = '0' + day;
     return `${month} ${day}, ${year}`;
   }
-
+*/
 }
