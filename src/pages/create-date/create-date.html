@@ -2,7 +2,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Create New Date</ion-title>
+    <ion-title>Add New Date</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -12,28 +12,48 @@
   <ion-list>
 
     <ion-item>
-      <ion-label>Date</ion-label>
-      <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="date.month"></ion-datetime>
+      <ion-label floating>Parent's Name</ion-label>
+      <ion-input type="text" [(ngModel)]="parent"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label floating>Date</ion-label>
+      <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="createdFeeding.feeding.date"></ion-datetime>
     </ion-item>
 
     <ion-item>
-      <ion-label>Time</ion-label>
-      <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="date.time"></ion-datetime>
+      <ion-label floating>Time</ion-label>
+      <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="timedFeeding.time"></ion-datetime>
     </ion-item>
 
     <ion-item>
-      <ion-label>Feeding (cc/mL)</ion-label>
+      <ion-label>Formula Amount (cc/mL)</ion-label>
+      <ion-range min="0" max="200" pin="true" [(ngModel)]="timedFeeding.fAmount">
+        <ion-label range-left>0</ion-label>
+        <ion-label range-right>200</ion-label>
+      </ion-range>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>Breast Milk Amount (cc/mL)</ion-label>
+      <ion-range min="0" max="200" pin="true" [(ngModel)]="timedFeeding.bmAmount">
+        <ion-label range-left>0</ion-label>
+        <ion-label range-right>200</ion-label>
+      </ion-range>
     </ion-item>
 
     <ion-item>
       <ion-label>Pee?</ion-label>
-      <ion-checkbox color="dark" [(ngModel)]="date.pee"></ion-checkbox>
+      <ion-checkbox color="dark" [(ngModel)]="timedFeeding.pee"></ion-checkbox>
     </ion-item>
 
     <ion-item>
       <ion-label>Poop?</ion-label>
-      <ion-checkbox color="dark" [(ngModel)]="date.poop"></ion-checkbox>
+      <ion-checkbox color="dark" [(ngModel)]="timedFeeding.poop"></ion-checkbox>
     </ion-item>
 
   </ion-list>
+
+  <button ion-button full color="secondary" (click)="saveFeeding()">Create</button>
 </ion-content>

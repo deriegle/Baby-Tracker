@@ -3,7 +3,7 @@
   <ion-navbar>
     <ion-title>Baby Tracker</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only color="royal" (click)="createNewDate($event)">
+      <button ion-button icon-only color="royal" (click)="createFeedingPage($event)">
         <ion-icon name="add-circle"></ion-icon>
       </button>
     </ion-buttons>
@@ -14,11 +14,11 @@
 
 <ion-content padding>
   <ion-list>
-    <button ion-item *ngFor="let date of dates" (click)="dateSelected($event, date)">
-      {{date}}
-    </button>
+   <button ion-item *ngFor="let feeding of (feedings | async)" (click)="openDetailPage(feeding)">
+     {{ feeding.date }}
+   </button>
   </ion-list>
-  <ion-item *ngFor="let item of items | async">
-    {{item | json}}
-  </ion-item>
+  <ion-list>
+
+  </ion-list>
 </ion-content>

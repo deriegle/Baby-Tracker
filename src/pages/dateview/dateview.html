@@ -1,17 +1,23 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>DateView</ion-title>
+    <ion-title>Feeding Details</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <h2 text-center *ngIf="selectedDate">
-    {{selectedDate}}
+  <h2 text-center>
+    {{feeding.date}} by {{feeding.parent}}
   </h2>
-  <ion-item *ngFor="let d of date">
-    {{d}}
+  <ion-item *ngFor="let feed of feeding.feedings">
+    <ion-list inset no-lines>
+      <ion-item><strong>Time: {{feed.time}}</strong></ion-item>
+      <ion-item>Formula Amount: {{feed.fAmount}}cc/mL</ion-item>
+      <ion-item>BreastMilk Amount: {{feed.bmAmount}}cc/mL</ion-item>
+      <ion-item>Pooped? {{feed.poop}}</ion-item>
+      <ion-item>Peed? {{feed.pee}}</ion-item>
+    </ion-list>
   </ion-item>
 </ion-content>

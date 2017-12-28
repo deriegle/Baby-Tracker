@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -11,10 +12,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { DateViewPage } from '../pages/dateview/dateview';
 import { CreateDatePage } from '../pages/create-date/create-date';
 
-import { firebaseConfig } from '../environment';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+import { FeedingsProvider } from '../providers/feedings/feedings';
 
 
 @NgModule({
@@ -28,10 +26,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -46,6 +42,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    FeedingsProvider,
   ]
 })
 export class AppModule {}
