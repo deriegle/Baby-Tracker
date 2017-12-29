@@ -1,39 +1,26 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
+import { Feeding } from '../../models/Feeding';
 
 @Injectable()
 export class FeedingsProvider {
-  apiUrl = "http://localhost:8080";
-  data: any;
-  constructor(public http: HttpClient) {    
-  }
+  feedingCollection: AngularFirestoreCollection<Feeding>;
+  feedings: Observable<Feeding[]>;
 
-  getFeedings(){
-    return new Promise(resolve => {
-      this.http.get(this.apiUrl + '/api/feedings')
-      .subscribe(data => {
-        resolve(this.data);
-      }, err => {
-        console.log(err);
+  constructor(public afs: AngularFirestore) {
+    // this.feedings = this.afs.collection('feedings').valueChanges();
+    /*this.feedings = this.afs.collection('feedings').snapshotChanges().map(changes => {
+      return changes.map(a => {
+        const data = a.payload.doc.data() as Feeding;
+        data.id = a.payload.doc.id;
+        return data;
       });
-    });
-  }
+    });*/
+   }
 
-  createFeeding(feeding) {
-    return new Promise((resolve, reject) => {
-      this.http.post(this.apiUrl + '/api/feedings', JSON.stringify(feeding))
-      .subscribe(res => {
-        resolve(res);
-      }, (err) => {
-        reject(err);
-      });
-    });
-  }
-
- /* deleteFeeding(id){
-    this.http.delete('http://localhost:8080/api/feedings/' + id).subscribe((res) => {
-      console.log(res);
-    })
-  }*/
+   getFeedings() {
+     return this.feedings;
+   }
 
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { FeedingsProvider } from '../../providers/feedings/feedings';
-
+import * as moment from 'moment';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 
@@ -10,16 +10,16 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: 'create-date.html',
 })
 export class CreateDatePage {
-  d = new Date;
-  todaysDate = this.d.getFullYear().toString() + '-' + (this.d.getMonth() + 1) + '-' + this.d.getDate().toString();
-  todaysTime = this.d.getHours().toString() + ':' + this.d.getMinutes().toString();
+  m = moment();
+  todaysDate = moment().format();
+  todaysTime = moment().format();
   
   timedFeeding = {
     time: this.todaysTime,
     fAmount: 0,
     bmAmount: 0,
     pee: false,
-    poop: false,
+    poop: false
   };
 
   createdFeeding = {
@@ -34,9 +34,11 @@ export class CreateDatePage {
   }
 
   saveFeeding() {
+
     this.httpClient.post("http://localhost:8080/api/feedings", this.createdFeeding ).subscribe(
       res => {
         console.log(res);
+        this.navCtrl.pop();
       },
       err => {
         console.log(err);
@@ -44,22 +46,19 @@ export class CreateDatePage {
     );
   }
 
+  convertUTCDateToLocalDate(date) {
+    var newDate = new Date(date.getTime() + date.getTimezoneOffset() * 60 * 1000);
+
+    var offset = date.getTimezoneOffset() / 60;
+    var hours = date.getHours();
+
+    newDate.setHours(hours - offset);
+
+    return newDate;
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad CreateDatePage');
   }
-/*
-  findMonth(d){
-    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-    return `$(months[d])`;
-  }
 
-  formattedDate(d) {
-    let month = String(this.findMonth(d.getMonth()));
-    let day = String(d.getDate());
-    const year = String(d.getFullYear());
-
-    if (day.length < 2) day = '0' + day;
-    return `${month} ${day}, ${year}`;
-  }
-*/
 }

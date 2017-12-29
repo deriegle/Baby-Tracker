@@ -3,7 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { MomentModule } from 'angular2-moment';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -12,6 +14,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { DateViewPage } from '../pages/dateview/dateview';
 import { CreateDatePage } from '../pages/create-date/create-date';
 
+import { firebase } from '../environment';
 import { FeedingsProvider } from '../providers/feedings/feedings';
 
 
@@ -26,7 +29,9 @@ import { FeedingsProvider } from '../providers/feedings/feedings';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
+    AngularFireModule.initializeApp(firebase),
+    AngularFirestoreModule,
+    MomentModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -42,7 +47,7 @@ import { FeedingsProvider } from '../providers/feedings/feedings';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    FeedingsProvider,
+    FeedingsProvider
   ]
 })
 export class AppModule {}

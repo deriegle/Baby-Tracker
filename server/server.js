@@ -89,10 +89,12 @@ app.post('/api/feedings', (req, res) => {
 });
 
 app.delete('/api/feedings/:feeding_id', (req, res) => {
-    Feeding.remove({
-        _id : req.params.feeding_id
-    }, (err, feeding) => {
+    console.log('Delete called');
+    Feeding.findByIdAndRemove(req.params.feeding_id, (err, feeding) => {
+        if(err)
+            res.send(err);
 
+        res.json({message: "Feeding deleted"});
     });
 });
 

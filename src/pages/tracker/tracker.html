@@ -13,11 +13,21 @@
 
 
 <ion-content padding>
-  <ion-list>
-   <button ion-item *ngFor="let feeding of (feedings | async)" (click)="openDetailPage(feeding)">
-     {{ feeding.date }}
-   </button>
-  </ion-list>
-  <ion-list>
+  <ion-list *ngIf="feedings?.length > 0; else noFeedings">
+    <ion-item-sliding *ngFor="let feeding of feedings">
+      <ion-item (click)="openDetailPage(feeding)">
+        <h2>{{feeding.id}}</h2>
+      </ion-item>
+      <ion-item-options>
+        <button ion-button color="danger" icon-start (click)="deleteFeeding($event, feeding)">
+          <ion-icon name="close"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+    <ng-template #noFeedings>
+      <h3>No Feedings Found</h3>
+    </ng-template>
+ 
   </ion-list>
 </ion-content>

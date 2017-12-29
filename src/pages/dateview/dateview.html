@@ -9,15 +9,15 @@
 
 <ion-content padding>
   <h2 text-center>
-    {{feeding.date}} by {{feeding.parent}}
+     {{ feeding.date | amDateFormat: 'LL' }} by {{feeding.parent}}
   </h2>
-  <ion-item *ngFor="let feed of feeding.feedings">
-    <ion-list inset no-lines>
-      <ion-item><strong>Time: {{feed.time}}</strong></ion-item>
-      <ion-item>Formula Amount: {{feed.fAmount}}cc/mL</ion-item>
-      <ion-item>BreastMilk Amount: {{feed.bmAmount}}cc/mL</ion-item>
-      <ion-item>Pooped? {{feed.poop}}</ion-item>
-      <ion-item>Peed? {{feed.pee}}</ion-item>
-    </ion-list>
-  </ion-item>
+  <ion-list no-lines *ngFor="let feed of feeding.feedings">
+    <ion-list-header>
+      {{feed.time | amDateFormat: 'hh:mm A'}}
+    </ion-list-header>
+    <ion-item>Formula Amount: {{feed.fAmount}}cc/mL</ion-item>
+    <ion-item>Breastmilk Amount: {{feed.bmAmount}}cc/mL</ion-item>
+    <ion-item>Pooped?: {{feed.poop}}</ion-item>
+    <ion-item>Peed? {{feed.pee}}</ion-item>    
+  </ion-list>
 </ion-content>
