@@ -16,7 +16,7 @@
   <h2 text-center>
      {{ feeding.date | amDateFormat: 'LL' }}
   </h2>
-  <ion-list no-lines *ngFor="let feed of feeding.feedings">
+  <ion-list no-lines *ngFor="let feed of feeding.feedings | orderBy: 'feed.time' : true">
     <ion-item>
       <ion-card>
         <ion-card-header>

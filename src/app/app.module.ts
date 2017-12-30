@@ -7,6 +7,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { MomentModule } from 'angular2-moment';
 import { FormsModule } from '@angular/forms'
+import { OrderModule } from 'ngx-order-pipe';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -36,6 +37,7 @@ import { FeedingsProvider } from '../providers/feedings/feedings';
     AngularFirestoreModule,
     MomentModule,
     FormsModule,
+    OrderModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],

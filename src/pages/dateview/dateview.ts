@@ -9,7 +9,7 @@ import { NewFeedingModalPage } from '../new-feeding-modal/new-feeding-modal';
   templateUrl: 'dateview.html',
 })
 export class DateViewPage {
-  feeding: any;
+  feeding: Feeding;
   editState: boolean = false;
   feedingToEdit: Feeding;
 
@@ -21,6 +21,11 @@ export class DateViewPage {
 
   ionViewDidLoad() {
   }
+
+  sortFeedings = function (feeding) {
+    var date = new Date(feeding.time);
+    return date;
+  };
 
   openNewFeedingModal(event, feeding){
     let modal = this.modalCtrl.create(NewFeedingModalPage, {feeding: feeding});

@@ -19,7 +19,7 @@ export class NewFeedingModalPage {
     pee: true,
     poop: true
   }
-  currentFeeding: any;
+  currentFeeding: Feeding;
 
   constructor(public feedingsProvider: FeedingsProvider, public navCtrl: NavController, public navParams: NavParams) {
     this.currentFeeding = this.navParams.get('feeding');
