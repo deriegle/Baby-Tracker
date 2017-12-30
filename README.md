@@ -10,15 +10,15 @@ Mobile app based on Ionic 3 Framework &amp; Google Firestore
 ## THINGS TO DO
 + Add Authorization
 
-   Add Auth through Google Firebase  
-   Create Login/Register Pages  
-   Track Feedings for specific users  
-   Save information on user's baby  
-   Allow dads & moms to collab on feeding their baby  
-   Allow other users (babysitters/grandparents) to collab  
+   1. Add Auth through Google Firebase  
+   2. Create Login/Register Pages  
+   3. Track Feedings for specific users  
+   4. Save information on user's baby  
+   5. Allow dads & moms to collab on feeding their baby  
+   6. Allow other users (babysitters/grandparents) to collab  
    
 + Customize CSS & Styling
   
-  Add custom styles to pages  
-  Test App on various devices
+  1. Add custom styles to pages  
+  2. Test App on various devices
 
