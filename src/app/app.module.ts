@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { MomentModule } from 'angular2-moment';
+import { FormsModule } from '@angular/forms'
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -13,6 +14,7 @@ import { TrackerPage } from '../pages/tracker/tracker';
 import { TabsPage } from '../pages/tabs/tabs';
 import { DateViewPage } from '../pages/dateview/dateview';
 import { CreateDatePage } from '../pages/create-date/create-date';
+import { NewFeedingModalPage } from '../pages/new-feeding-modal/new-feeding-modal';
 
 import { firebase } from '../environment';
 import { FeedingsProvider } from '../providers/feedings/feedings';
@@ -25,13 +27,15 @@ import { FeedingsProvider } from '../providers/feedings/feedings';
     DateViewPage,
     HomePage,
     TabsPage,
-    CreateDatePage
+    CreateDatePage,
+    NewFeedingModalPage
   ],
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(firebase),
+    AngularFireModule.initializeApp(firebase, 'baby-tracker'),
     AngularFirestoreModule,
     MomentModule,
+    FormsModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -41,7 +45,8 @@ import { FeedingsProvider } from '../providers/feedings/feedings';
     DateViewPage,
     HomePage,
     TabsPage,
-    CreateDatePage
+    CreateDatePage,
+    NewFeedingModalPage
   ],
   providers: [
     StatusBar,

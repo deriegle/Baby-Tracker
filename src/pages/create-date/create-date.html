@@ -13,44 +13,43 @@
 
     <ion-item>
       <ion-label floating>Parent's Name</ion-label>
-      <ion-input type="text" [(ngModel)]="createdFeeding.feeding.parent"></ion-input>
+      <ion-input type="text" [(ngModel)]="currentFeeding.parent"></ion-input>
     </ion-item>
     
     <ion-item>
       <ion-label floating>Date</ion-label>
-      <ion-datetime displayFormat="DDDD MMM DD YYYY" [(ngModel)]="createdFeeding.feeding.date"></ion-datetime>
+      <ion-datetime displayFormat="DDDD MMM DD YYYY" [(ngModel)]="feeding.date"></ion-datetime>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Time</ion-label>
-      <ion-datetime displayFormat="hh:mm A" pickerFormat="hh mm A" [(ngModel)]="timedFeeding.time"></ion-datetime>
+      <ion-datetime displayFormat="hh:mm A" pickerFormat="hh mm A" [(ngModel)]="currentFeeding.time"></ion-datetime>
     </ion-item>
 
     <ion-item>
       <ion-label>Formula Amount (cc/mL)</ion-label>
-      <ion-range min="0" max="200" pin="true" [(ngModel)]="timedFeeding.fAmount">
+      <ion-range min="0" max="100" pin="true" [(ngModel)]="currentFeeding.fAmount">
         <ion-label range-left>0</ion-label>
-        <ion-label range-right>200</ion-label>
+        <ion-label range-right>100</ion-label>
       </ion-range>
     </ion-item>
 
-
     <ion-item>
       <ion-label>Breast Milk Amount (cc/mL)</ion-label>
-      <ion-range min="0" max="200" pin="true" [(ngModel)]="timedFeeding.bmAmount">
+      <ion-range min="0" max="100" pin="true" [(ngModel)]="currentFeeding.bmAmount">
         <ion-label range-left>0</ion-label>
-        <ion-label range-right>200</ion-label>
+        <ion-label range-right>100</ion-label>
       </ion-range>
     </ion-item>
 
     <ion-item>
       <ion-label>Pee?</ion-label>
-      <ion-checkbox color="dark" [(ngModel)]="timedFeeding.pee"></ion-checkbox>
+      <ion-checkbox color="dark" [(ngModel)]="currentFeeding.pee"></ion-checkbox>
     </ion-item>
 
     <ion-item>
       <ion-label>Poop?</ion-label>
-      <ion-checkbox color="dark" [(ngModel)]="timedFeeding.poop"></ion-checkbox>
+      <ion-checkbox color="dark" [(ngModel)]="currentFeeding.poop"></ion-checkbox>
     </ion-item>
 
   </ion-list>

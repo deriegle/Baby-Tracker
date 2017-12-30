@@ -4,7 +4,7 @@
     <ion-title>Baby Tracker</ion-title>
     <ion-buttons end>
       <button ion-button icon-only color="royal" (click)="createFeedingPage()">
-        <ion-icon name="add-circle"></ion-icon>
+        <ion-icon name="create"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -16,7 +16,8 @@
   <ion-list *ngIf="feedings?.length > 0; else noFeedings">
     <ion-item-sliding *ngFor="let feeding of feedings">
       <ion-item (click)="openDetailPage(feeding)">
-        <h2>{{feeding.id}}</h2>
+        <h2>{{feeding.date | amDateFormat: 'LL'}}</h2>
+        <ion-badge item-end>{{feeding.feedings.length}}</ion-badge>
       </ion-item>
       <ion-item-options>
         <button ion-button color="danger" icon-start (click)="deleteFeeding($event, feeding)">

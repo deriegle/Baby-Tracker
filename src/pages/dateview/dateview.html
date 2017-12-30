@@ -2,6 +2,11 @@
 
   <ion-navbar>
     <ion-title>Feeding Details</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="openNewFeedingModal($event, feeding)">
+        <ion-icon name="create"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -9,15 +14,77 @@
 
 <ion-content padding>
   <h2 text-center>
-     {{ feeding.date | amDateFormat: 'LL' }} by {{feeding.parent}}
+     {{ feeding.date | amDateFormat: 'LL' }}
   </h2>
   <ion-list no-lines *ngFor="let feed of feeding.feedings">
-    <ion-list-header>
-      {{feed.time | amDateFormat: 'hh:mm A'}}
-    </ion-list-header>
-    <ion-item>Formula Amount: {{feed.fAmount}}cc/mL</ion-item>
-    <ion-item>Breastmilk Amount: {{feed.bmAmount}}cc/mL</ion-item>
-    <ion-item>Pooped?: {{feed.poop}}</ion-item>
-    <ion-item>Peed? {{feed.pee}}</ion-item>    
+    <ion-item>
+      <ion-card>
+        <ion-card-header>
+          <strong>{{feed.time | amDateFormat: 'hh:mm A'}}</strong> | {{feed.parent}}
+        </ion-card-header>
+        <ion-list>
+          <ion-item>Formula Amount: {{feed.fAmount}}cc/mL</ion-item>
+          <ion-item>Breastmilk Amount: {{feed.bmAmount}}cc/mL</ion-item>
+          <ion-item>Pooped?: {{feed.poop}}</ion-item>
+          <ion-item>Peed? {{feed.pee}}</ion-item>
+        </ion-list>
+        <!-- Floating Action Buttons for Edit & Delete -->
+        <ion-fab top right>
+          <button ion-fab mini>
+            <ion-icon name="arrow-down"></ion-icon>
+          </button>
+          <ion-fab-list>
+            <button ion-fab color="secondary" (click)="editFeeding($event, feed)">
+              <ion-icon name="build"></ion-icon>
+            </button>
+            <button ion-fab color="danger" (click)="deleteOneFeeding($event, feed)">
+              <ion-icon name="trash"></ion-icon>
+            </button>
+          </ion-fab-list>
+        </ion-fab>
+        <div *ngIf="editState && feedingToEdit.time == feed.time">
+            <ion-list>
+            
+              <ion-item>
+                <ion-label floating>Parent's Name</ion-label>
+                <ion-input type="text" [(ngModel)]="feed.parent"></ion-input>
+              </ion-item>
+            
+              <ion-item>
+                <ion-label floating>Time</ion-label>
+                <ion-datetime displayFormat="hh:mm A" pickerFormat="hh mm A" [(ngModel)]="feed.time"></ion-datetime>
+              </ion-item>
+            
+              <ion-item>
+                <ion-label>Formula Amount (cc/mL)</ion-label>
+                <ion-range min="0" max="100" pin="true" [(ngModel)]="feed.fAmount">
+                  <ion-label range-left>0</ion-label>
+                  <ion-label range-right>100</ion-label>
+                </ion-range>
+              </ion-item>
+            
+              <ion-item>
+                <ion-label>Breast Milk Amount (cc/mL)</ion-label>
+                <ion-range min="0" max="100" pin="true" [(ngModel)]="feed.bmAmount">
+                  <ion-label range-left>0</ion-label>
+                  <ion-label range-right>100</ion-label>
+                </ion-range>
+              </ion-item>
+            
+              <ion-item>
+                <ion-label>Pee?</ion-label>
+                <ion-checkbox color="dark" [(ngModel)]="feed.pee"></ion-checkbox>
+              </ion-item>
+            
+              <ion-item>
+                <ion-label>Poop?</ion-label>
+                <ion-checkbox color="dark" [(ngModel)]="feed.poop"></ion-checkbox>
+              </ion-item>
+              
+            </ion-list>
+            <button ion-button full color="secondary" (click)="updateFeeding($event, feeding)">Update</button>
+        </div>
+      </ion-card>
+    </ion-item>
   </ion-list>
 </ion-content>

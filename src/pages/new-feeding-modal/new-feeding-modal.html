@@ -1,0 +1,61 @@
+
+<ion-header>
+
+  <ion-toolbar>
+    <ion-title>
+      New Feeding for {{ currentFeeding.date | amDateFormat: 'LL' }}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+    
+      <ion-item>
+        <ion-label floating>Parent's Name</ion-label>
+        <ion-input type="text" [(ngModel)]="feeding.parent"></ion-input>
+      </ion-item>
+    
+    
+      <ion-item>
+        <ion-label floating>Time</ion-label>
+        <ion-datetime displayFormat="hh:mm A" pickerFormat="hh mm A" [(ngModel)]="feeding.time"></ion-datetime>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label>Formula Amount (cc/mL)</ion-label>
+        <ion-range min="0" max="100" pin="true" [(ngModel)]="feeding.fAmount">
+          <ion-label range-left>0</ion-label>
+          <ion-label range-right>100</ion-label>
+        </ion-range>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label>Breast Milk Amount (cc/mL)</ion-label>
+        <ion-range min="0" max="100" pin="true" [(ngModel)]="feeding.bmAmount">
+          <ion-label range-left>0</ion-label>
+          <ion-label range-right>100</ion-label>
+        </ion-range>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label>Pee?</ion-label>
+        <ion-checkbox color="dark" [(ngModel)]="feeding.pee"></ion-checkbox>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label>Poop?</ion-label>
+        <ion-checkbox color="dark" [(ngModel)]="feeding.poop"></ion-checkbox>
+      </ion-item>
+      
+    </ion-list>
+    <button ion-button full color="secondary" (click)="updateFeeding($event, feeding)">Add Feeding</button>
+</ion-content>

@@ -39,8 +39,7 @@ export class TrackerPage {
   }
 
   deleteFeeding(event, feeding) {
-    console.log('delete feeding ran');
-    
+    this.feedingsProvider.deleteFeeding(feeding);
   }
 
   openDetailPage(feeding){

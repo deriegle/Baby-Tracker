@@ -7,20 +7,38 @@ import { Feeding } from '../../models/Feeding';
 export class FeedingsProvider {
   feedingCollection: AngularFirestoreCollection<Feeding>;
   feedings: Observable<Feeding[]>;
+  feedingDoc: AngularFirestoreDocument<Feeding>;
 
   constructor(public afs: AngularFirestore) {
     // this.feedings = this.afs.collection('feedings').valueChanges();
-    /*this.feedings = this.afs.collection('feedings').snapshotChanges().map(changes => {
+    this.feedingCollection = this.afs.collection('feedings', ref => ref.orderBy('date', 'desc'));
+    
+    this.feedings = this.feedingCollection.snapshotChanges().map(changes => {
       return changes.map(a => {
         const data = a.payload.doc.data() as Feeding;
         data.id = a.payload.doc.id;
         return data;
       });
-    });*/
-   }
+    });
 
-   getFeedings() {
-     return this.feedings;
-   }
+  }
+
+  getFeedings() {
+    return this.feedings;
+  }
+
+  addFeeding(feeding: Feeding){
+  this.feedingCollection.add(feeding);
+  }
+
+  deleteFeeding(feeding: Feeding){
+    this.feedingDoc = this.afs.doc(`feedings/${feeding.id}`);
+    this.feedingDoc.delete();
+  }
+
+  updateFeeding(feeding : Feeding){
+    this.feedingDoc = this.afs.doc(`feedings/${feeding.id}`);
+    this.feedingDoc.update(feeding);
+  }
 
 }
