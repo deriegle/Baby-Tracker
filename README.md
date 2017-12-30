@@ -28,6 +28,9 @@ Mobile app based on Ionic 3 Framework &amp; Google Firestore
 ```javascript
 npm install
 ```
+then...
 ```javascript
 ionic serve
 ```
+
+You'll need to add your own Firebase information into the *src/environment.ts* file
