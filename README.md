@@ -2,12 +2,12 @@ Baby-Tracker
 ================
 Mobile app based on Ionic 3 Framework &amp; Google Firestore
 
-## FEATURES
+### Features
 * Keep track of feedings, pees, and bowel movements for baby for specific days.
 * Allow updating, editing, and deleting of feedings
 * Use Google Firestore to keep a modern async database linked with the app
 
-## THINGS TO DO
+### Things To Do
 + Add Authorization
 
    1. Add Auth through Google Firebase  
@@ -22,3 +22,12 @@ Mobile app based on Ionic 3 Framework &amp; Google Firestore
   1. Add custom styles to pages  
   2. Test App on various devices
 
+## Installation
+**Make sure you have Node & NPM installed, then run:**
+
+```javascript
+npm install
+```
+```javascript
+ionic serve
+```
