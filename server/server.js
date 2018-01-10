@@ -6,7 +6,7 @@ var express     = require('express'),
     cors        = require('cors'),    
     app         = express();
 
-mongoose.connect('mongodb://btracker-admin:riegled1@ds131697.mlab.com:31697/baby-tracker', { useMongoClient: true});
+mongoose.connect('mongodb://localhost', { useMongoClient: true});
     
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
